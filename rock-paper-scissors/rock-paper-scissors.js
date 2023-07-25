@@ -1,5 +1,6 @@
 
 function getComputerChoice(){
+    //Grabs Computer's Decision
     result = Math.floor(Math.random()*3)+1;
     if (result == 1){
         computerChoice = "ROCK";
@@ -17,7 +18,7 @@ function getComputerChoice(){
 }
 
 function playRound(playerSelection, computerSelection){
-
+    //Compares Player's and Computer's Decision, Then Outputs Message
     if (playerSelection.toUpperCase() == computerSelection){
         let message = "You Tie!"
         return message
@@ -49,6 +50,7 @@ function playRound(playerSelection, computerSelection){
 }
 
 function game(){
+    //Runs 5 Rounds of Rock, Paper, Scissors
     let score = 0
     for (let count = 1; count <= 5; count++){
         let playerChooses = prompt("Choose Rock, Paper, or Scissors");
@@ -68,7 +70,8 @@ function game(){
     return score
 }
 
-
 finalScore = game();
+
+//Spits Out Win Rate Against Computer
 console.log("Your Final Score Is " + finalScore + " Out Of 5 Rounds Won")
 

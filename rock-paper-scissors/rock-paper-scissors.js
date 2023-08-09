@@ -4,74 +4,79 @@ function getComputerChoice(){
     result = Math.floor(Math.random()*3)+1;
     if (result == 1){
         computerChoice = "ROCK";
-        console.log("ROCK");
     }
     else if (result == 2){
         computerChoice = "PAPER";
-        console.log("PAPER");
     }
     else {
         computerChoice = "SCISSORS";
-        console.log("SCISSORS");
     }
     return computerChoice
 }
 
 function playRound(playerSelection, computerSelection){
     //Compares Player's and Computer's Decision, Then Outputs Message
-    if (playerSelection.toUpperCase() == computerSelection){
+    if (playerSelection == computerSelection){
         let message = "You Tie!"
         return message
     }
-    else if (playerSelection.toUpperCase() == "ROCK" && computerSelection == "PAPER"){
+    else if (playerSelection == "ROCK" && computerSelection == "PAPER"){
         let message = "You Lose!"
         return message
     }
-    else if (playerSelection.toUpperCase() == "ROCK" && computerSelection == "SCISSORS"){
+    else if (playerSelection == "ROCK" && computerSelection == "SCISSORS"){
         let message = "You Win!"
         return message
     }
-    else if (playerSelection.toUpperCase() == "PAPER" && computerSelection == "ROCK"){
+    else if (playerSelection == "PAPER" && computerSelection == "ROCK"){
         let message = "You Win!"
         return message
     }
-    else if (playerSelection.toUpperCase() == "PAPER" && computerSelection == "SCISSORS"){
+    else if (playerSelection == "PAPER" && computerSelection == "SCISSORS"){
         let message = "You Lose!"
         return message
     }
-    else if (playerSelection.toUpperCase() == "SCISSORS" && computerSelection == "ROCK"){
+    else if (playerSelection == "SCISSORS" && computerSelection == "ROCK"){
         let message = "You Lose!"
         return message
     }
-    else if (playerSelection.toUpperCase() == "SCISSORS" && computerSelection == "PAPER"){
+    else if (playerSelection == "SCISSORS" && computerSelection == "PAPER"){
         let message = "You Win!"
         return message
     }
 }
 
-function game(){
+function game(playerChoice,totalScore){
     //Runs 5 Rounds of Rock, Paper, Scissors
-    let score = 0
-    for (let count = 1; count <= 5; count++){
-        let playerChooses = prompt("Choose Rock, Paper, or Scissors");
-        let computerChooses = getComputerChoice();
-        if((playRound(playerChooses,computerChooses))=="You Win!"){
-            console.log("You Win!");
-            score = ++score;
-        }
-        else if ((playRound(playerChooses,computerChooses))=="You Tie!"){
-            console.log("You Tie!");
-            score = score + 0.5;
-        }
-        else{
-            console.log("You Lose!");
-        }
+    let computerChooses = getComputerChoice();
+    if((playRound(playerChoice,computerChooses))=="You Win!"){
+        console.log("You Win!");
+        score = totalScore + 1;
+    }
+    else if ((playRound(playerChoice,computerChooses))=="You Tie!"){
+        console.log("You Tie!");
+        score = totalScore + 0.5;
+    }
+    else{
+        console.log("You Lose!");
     }
     return score
 }
 
-finalScore = game();
+//Main Function
+let score = 0
 
-//Spits Out Win Rate Against Computer
-console.log("Your Final Score Is " + finalScore + " Out Of 5 Rounds Won")
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button)=>{
+    button.addEventListener('click',()=>{
+        score = game(button.id,score);
+        console.log(score);
+    });
+});
 
+const container = document.querySelector('#container');
+const div = document.createElement('div');
+div.classList.add('div');
+div.textContent = "Total Points: " & score;
+
+container.appendChild(div);

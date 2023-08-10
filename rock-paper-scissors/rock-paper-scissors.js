@@ -23,7 +23,7 @@ function playRound(playerSelection, score){
     
     if (playerSelection == computerSelection){
         results.textContent = "You Tie!"
-        score = totalScore + 0;
+        score = totalScore + 0.5;
     }
     else if (playerSelection == "ROCK" && computerSelection == "PAPER"){
         results.textContent = "You Lose."
@@ -66,7 +66,7 @@ buttons.forEach((button)=>{
         const playerContainer = document.querySelector('#playerContainer');
         playerContainer.textContent = "Player Total Points:".concat(" ",score);
         const computerContainer = document.querySelector('#computerContainer');
-        computerContainer.textContent = "Player Total Points:".concat(" ",round - score);
+        computerContainer.textContent = "Computer Total Points:".concat(" ",round - score);
     });
 });
 

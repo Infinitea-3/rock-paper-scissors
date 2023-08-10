@@ -1,4 +1,3 @@
-
 function getComputerChoice(){
     //Grabs Computer's Decision
     result = Math.floor(Math.random()*3)+1;
@@ -47,19 +46,23 @@ function playRound(playerSelection, computerSelection){
 }
 
 function game(playerChoice,totalScore){
-    //Runs 5 Rounds of Rock, Paper, Scissors
+
+    const results = document.querySelector('#results');
+
     let computerChooses = getComputerChoice();
     if((playRound(playerChoice,computerChooses))=="You Win!"){
-        console.log("You Win!");
+        results.textContent = "You Win!"
         score = totalScore + 1;
     }
     else if ((playRound(playerChoice,computerChooses))=="You Tie!"){
-        console.log("You Tie!");
+        results.textContent = "You Tie!"
         score = totalScore + 0.5;
     }
     else{
-        console.log("You Lose!");
+        results.textContent = "You Lose."
     }
+    //results.replaceChild(resultsDiv, resultsDiv);
+
     return score
 }
 
@@ -70,13 +73,8 @@ const buttons = document.querySelectorAll('button');
 buttons.forEach((button)=>{
     button.addEventListener('click',()=>{
         score = game(button.id,score);
-        console.log(score);
+        const container = document.querySelector('#container');
+        container.textContent = "Total Points:".concat(" ",score);
     });
 });
 
-const container = document.querySelector('#container');
-const div = document.createElement('div');
-div.classList.add('div');
-div.textContent = "Total Points: " & score;
-
-container.appendChild(div);

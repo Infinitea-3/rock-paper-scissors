@@ -1,8 +1,7 @@
 //Declarations for Changing Text
-const results = document.querySelector('#results');
-const roundContainer = document.querySelector('#roundContainer');
 const playerContainer = document.querySelector('#playerContainer');
 const computerContainer = document.querySelector('#computerContainer');
+const results = document.querySelector('#results');
 
 //Basic Variables
 let computerScore = 0;
@@ -13,13 +12,13 @@ let round = 0;
 function getComputerChoice(){
     result = Math.floor(Math.random()*3);
     if (result == 0){
-        computerChoice = "ROCK";
+        computerChoice = "Rock";
     }
     else if (result == 1){
-        computerChoice = "PAPER";
+        computerChoice = "Paper";
     }
     else {
-        computerChoice = "SCISSORS";
+        computerChoice = "Scissors";
     }
     return computerChoice
 }
@@ -33,27 +32,27 @@ function playRound(playerSelection){
         results.textContent = "You Tie!";
         result = 2;
     }
-    else if (playerSelection == "ROCK" && computerSelection == "PAPER"){
+    else if (playerSelection == "Rock" && computerSelection == "Paper"){
         results.textContent = "You Lose.";
         result = 0;
     }
-    else if (playerSelection == "ROCK" && computerSelection == "SCISSORS"){
+    else if (playerSelection == "Rock" && computerSelection == "Scissors"){
         results.textContent = "You Win!";
         result = 1;
     }
-    else if (playerSelection == "PAPER" && computerSelection == "ROCK"){
+    else if (playerSelection == "Paper" && computerSelection == "Rock"){
         results.textContent = "You Win!";
         result = 1;
     }
-    else if (playerSelection == "PAPER" && computerSelection == "SCISSORS"){
+    else if (playerSelection == "Paper" && computerSelection == "Scissors"){
         results.textContent = "You Lose.";
         result = 0;
     }
-    else if (playerSelection == "SCISSORS" && computerSelection == "ROCK"){
+    else if (playerSelection == "Scissors" && computerSelection == "Rock"){
         results.textContent = "You Lose.";
         result = 0;
     }
-    else if (playerSelection == "SCISSORS" && computerSelection == "PAPER"){
+    else if (playerSelection == "Scissors" && computerSelection == "Paper"){
         results.textContent = "You Win!";
         result = 1;
     }
@@ -62,20 +61,14 @@ function playRound(playerSelection){
 
 //Play A Round, Spit Out Results
 function playGame(){
-    roundContainer.textContent = "Round:".concat(round);
-
-    playerContainer.textContent = "Player Total Points:".concat(" ",playerScore);
-
-    computerContainer.textContent = "Computer Total Points:".concat(" ",computerScore);
+    playerContainer.textContent = "Player: ".concat(playerScore);
+    computerContainer.textContent = "Computer: ".concat(computerScore);
 
     if(playerScore==5){
-        roundContainer.textContent = "You Win The Match!";
-        results.textContent = "";
-
+        results.textContent = "You Win The Match!";
     }
     else if(computerScore==5){
-        roundContainer.textContent = "You Lose, Better Luck Next Time!";
-        results.textContent = "";
+        results.textContent = "You Lose, Better Luck Next Time!";
     }
 }
 
@@ -83,7 +76,9 @@ function playGame(){
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button)=>{
     button.addEventListener('click',()=>{
-        round++;
+        if(playerScore == 5||computerScore == 5){
+            return;
+        }
         let score = playRound(button.id);
         if (score==0){
             computerScore++;

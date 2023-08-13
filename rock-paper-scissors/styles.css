@@ -7,24 +7,56 @@ body{
     flex-direction: column;
 }
 
+.status{
+    display:flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
+}
+
+#results{
+    display:flex;
+    justify-content: center;
+}
+
 .buttons{
     display:flex;
     flex-direction: row;
     justify-content: space-around;
     padding: 10px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 
 .playerButtons{
     width: 100px;
     height: 100px; 
-    font-size: 20px;
     border-radius: 50%;
+    border-color: black;
+    background-color: transparent;
+}
+
+#Rock{
+    background-image: url("https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/da268f06e621b21.png");
+    background-position: center;
+    background-size: 80px;
+    background-repeat: no-repeat;
+}
+
+#Paper{
+    background-image: url("https://media.istockphoto.com/id/1480729053/vector/toilet-paper-roll-pixel-art-8-bit-toilet-paper-pixelated.jpg?s=612x612&w=0&k=20&c=OGYuMbCLTo6diEz1VlvrMMCLF5QD-7LeTXb6I0-CMiU=");
+    background-position: center;
+    background-size: 150px;
+    background-repeat: no-repeat;
+}
+
+#Scissors{
+    background-image: url("https://img.freepik.com/free-icon/cut_318-345329.jpg");
+    background-position: center;
+    background-size: 65px;
+    background-repeat: no-repeat;
 }
 
 .playerButtons:hover{
     border-color: goldenrod;
     border-width: 5px;
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
-

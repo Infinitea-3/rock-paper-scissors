@@ -1,10 +1,21 @@
+//Declarations for Changing Text
+const results = document.querySelector('#results');
+const roundContainer = document.querySelector('#roundContainer');
+const playerContainer = document.querySelector('#playerContainer');
+const computerContainer = document.querySelector('#computerContainer');
+
+//Basic Variables
+let computerScore = 0;
+let playerScore = 0;
+let round = 0;
+
 function getComputerChoice(){
     //Grabs Computer's Decision
-    result = Math.floor(Math.random()*3)+1;
-    if (result == 1){
+    result = Math.floor(Math.random()*3);
+    if (result == 0){
         computerChoice = "ROCK";
     }
-    else if (result == 2){
+    else if (result == 1){
         computerChoice = "PAPER";
     }
     else {
@@ -13,60 +24,75 @@ function getComputerChoice(){
     return computerChoice
 }
 
-function playRound(playerSelection, score){
-    const results = document.querySelector('#results');
-
-    totalScore = score
+function playRound(playerSelection){
 
     //Compares Player's & Computer's Decision, Then Outputs Message & Score
     let computerSelection = getComputerChoice();
     
     if (playerSelection == computerSelection){
-        results.textContent = "You Tie!"
-        score = totalScore + 0.5;
+        results.textContent = "You Tie!";
+        result = 2;
     }
     else if (playerSelection == "ROCK" && computerSelection == "PAPER"){
-        results.textContent = "You Lose."
-        score = totalScore + 0;
+        results.textContent = "You Lose.";
+        result = 0;
     }
     else if (playerSelection == "ROCK" && computerSelection == "SCISSORS"){
-        results.textContent = "You Win!"
-        score = totalScore + 1;
+        results.textContent = "You Win!";
+        result = 1;
     }
     else if (playerSelection == "PAPER" && computerSelection == "ROCK"){
-        results.textContent = "You Win!"
-        score = totalScore + 1;
+        results.textContent = "You Win!";
+        result = 1;
     }
     else if (playerSelection == "PAPER" && computerSelection == "SCISSORS"){
-        results.textContent = "You Lose."
-        score = totalScore + 0;
+        results.textContent = "You Lose.";
+        result = 0;
     }
     else if (playerSelection == "SCISSORS" && computerSelection == "ROCK"){
-        results.textContent = "You Lose."
-        score = totalScore + 0;
+        results.textContent = "You Lose.";
+        result = 0;
     }
     else if (playerSelection == "SCISSORS" && computerSelection == "PAPER"){
-        results.textContent = "You Win!"
-        score = totalScore + 1;
+        results.textContent = "You Win!";
+        result = 1;
     }
-    return score
+    return result
 }
 
-//Main Function
-let score = 0
-let round = 0
-
+//Buttons for Player Input, Round Increments By One
 const buttons = document.querySelectorAll('button');
+
+//Start Program on Button Clicks
 buttons.forEach((button)=>{
     button.addEventListener('click',()=>{
-        score = playRound(button.id, score);
-        round = round + 1
-        const roundContainer = document.querySelector('#roundContainer');
-        roundContainer.textContent = "Round:".concat(round);
-        const playerContainer = document.querySelector('#playerContainer');
-        playerContainer.textContent = "Player Total Points:".concat(" ",score);
-        const computerContainer = document.querySelector('#computerContainer');
-        computerContainer.textContent = "Computer Total Points:".concat(" ",round - score);
+        round++;
+        let score = playRound(button.id);
+        if (score==0){
+            computerScore++;
+        }
+        else if (score==1){
+            playerScore++;
+        }
+        playGame();
     });
 });
 
+//Play A Round, Spit Out Results
+function playGame(){
+    roundContainer.textContent = "Round:".concat(round);
+
+    playerContainer.textContent = "Player Total Points:".concat(" ",playerScore);
+
+    computerContainer.textContent = "Computer Total Points:".concat(" ",computerScore);
+
+    if(playerScore==5){
+        roundContainer.textContent = "You Win The Match!";
+        results.textContent = "";
+
+    }
+    else if(computerScore==5){
+        roundContainer.textContent = "You Lose, Better Luck Next Time!";
+        results.textContent = "";
+    }
+}

@@ -1,62 +1,77 @@
 html{
-    font-size:20px;
+    font-size:36px;
+    font-family:'Verdana',sans-serif;
+}
+
+.title{
+    font-size:56px;
+    display:flex;
+    justify-content: center;
+    margin:50px;
 }
 
 body{
-    display:flex;
-    flex-direction: column;
+    background: linear-gradient(#fcfcfc,#6b6b6b);
+    height: auto;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size:cover;
 }
 
 .status{
     display:flex;
     justify-content: space-around;
-    margin-bottom: 25px;
+    margin: 50px;
 }
 
 #results{
     display:flex;
-    justify-content: center;
+    justify-content: space-around;
+    margin: 50px;
 }
 
 .buttons{
     display:flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding: 10px;
     margin-bottom: 50px;
+    margin-left:75px;
+    margin-right:75px;
 }
 
 .playerButtons{
-    width: 100px;
-    height: 100px; 
+    width: 150px;
+    height: 150px; 
     border-radius: 50%;
     border-color: black;
+    border-width: 5px;
     background-color: transparent;
 }
 
 #Rock{
     background-image: url("https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/da268f06e621b21.png");
     background-position: center;
-    background-size: 80px;
+    background-size: 115px;
     background-repeat: no-repeat;
 }
 
 #Paper{
-    background-image: url("https://media.istockphoto.com/id/1480729053/vector/toilet-paper-roll-pixel-art-8-bit-toilet-paper-pixelated.jpg?s=612x612&w=0&k=20&c=OGYuMbCLTo6diEz1VlvrMMCLF5QD-7LeTXb6I0-CMiU=");
+    background-image: url("https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/b6180e16e66c589.png");
     background-position: center;
-    background-size: 150px;
+    background-size: 105px;
     background-repeat: no-repeat;
 }
 
 #Scissors{
     background-image: url("https://img.freepik.com/free-icon/cut_318-345329.jpg");
     background-position: center;
-    background-size: 65px;
+    background-size: 90px;
     background-repeat: no-repeat;
 }
 
 .playerButtons:hover{
-    border-color: goldenrod;
-    border-width: 5px;
+    border-color:goldenrod;
+    border-width: 10px;
     transform: scale(1.2);
 }

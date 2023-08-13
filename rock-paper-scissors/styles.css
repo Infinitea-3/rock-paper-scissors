@@ -1,0 +1,30 @@
+html{
+    font-size:20px;
+}
+
+body{
+    display:flex;
+    flex-direction: column;
+}
+
+.buttons{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+    margin-bottom: 100px;
+}
+
+.playerButtons{
+    width: 100px;
+    height: 100px; 
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+.playerButtons:hover{
+    border-color: goldenrod;
+    border-width: 5px;
+    transform: scale(1.1);
+}
+

@@ -9,8 +9,8 @@ let computerScore = 0;
 let playerScore = 0;
 let round = 0;
 
+//Grabs Computer's Decision
 function getComputerChoice(){
-    //Grabs Computer's Decision
     result = Math.floor(Math.random()*3);
     if (result == 0){
         computerChoice = "ROCK";
@@ -24,9 +24,9 @@ function getComputerChoice(){
     return computerChoice
 }
 
+ //Compares Player's & Computer's Decision, Then Outputs Message & Score
 function playRound(playerSelection){
 
-    //Compares Player's & Computer's Decision, Then Outputs Message & Score
     let computerSelection = getComputerChoice();
     
     if (playerSelection == computerSelection){
@@ -60,24 +60,6 @@ function playRound(playerSelection){
     return result
 }
 
-//Buttons for Player Input, Round Increments By One
-const buttons = document.querySelectorAll('button');
-
-//Start Program on Button Clicks
-buttons.forEach((button)=>{
-    button.addEventListener('click',()=>{
-        round++;
-        let score = playRound(button.id);
-        if (score==0){
-            computerScore++;
-        }
-        else if (score==1){
-            playerScore++;
-        }
-        playGame();
-    });
-});
-
 //Play A Round, Spit Out Results
 function playGame(){
     roundContainer.textContent = "Round:".concat(round);
@@ -96,3 +78,19 @@ function playGame(){
         results.textContent = "";
     }
 }
+
+//Start Program on Button Clicks
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button)=>{
+    button.addEventListener('click',()=>{
+        round++;
+        let score = playRound(button.id);
+        if (score==0){
+            computerScore++;
+        }
+        else if (score==1){
+            playerScore++;
+        }
+        playGame();
+    });
+});
